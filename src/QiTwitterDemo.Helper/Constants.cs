@@ -8,9 +8,9 @@ namespace QiTwitterDemo.Helper
 {
     public static class Constants
     {
-        public static string TokenConsumerKey = "";
-        public static string TokenConsumerSecret = "";
-        public static string TokenAccessToken = "";
-        public static string TokenAccessTokenSecret = "";
+        public static string ConsumerKey = "";
+        public static string ConsumerSecret = "";
+        public static string AccessToken = "";
+        public static string AccessTokenSecret = "";
     }
 }
