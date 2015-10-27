@@ -2,19 +2,7 @@ version: 1.0.{build}
 os:
 - Visual Studio 2015
 init:
-- ps: >-
-    Set-ExecutionPolicy Unrestricted
-    iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.ps1'))
-install:
-- ps: >-
-    set PATH=%USERPROFILE%/.k/bin;%PATH%
-    set KRE_HOME=%USERPROFILE%/.kre
-    call kvm upgrade
-    set PATH=C:\Program Files (x86)\MSBuild\14.0\Bin;%PATH%
-    call kpm restore %APPVEYOR_BUILD_FOLDER%
-    if %ERRORLEVEL% NEQ 0 (
-    exit /b 0
-    )
+  - git config --global core.autocrlf true
 environment:
   matrix:
   - solution_name: QiTwitterDemo.sln
@@ -31,6 +19,6 @@ before_build:
   - appveyor DownloadFile https://raw.githubusercontent.com/appveyor/ci/master/scripts/nuget-restore.cmd
   - nuget-restore
 build_script:
-  - msbuild %solution_name%
+  - build.cmd --quiet verify
 cache:
   - packages -> **\packages.config
