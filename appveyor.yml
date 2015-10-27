@@ -1,0 +1,13 @@
+version: 1.0.{build}
+os:
+- Visual Studio 2015
+environment:
+  matrix:
+  - solution_name: QiTwitterDemo.sln
+configuration:
+  - Debug
+  - Release
+platform:
+  - Any CPU
+build_script:
+  - msbuild %solution_name%
