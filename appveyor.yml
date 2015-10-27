@@ -6,8 +6,8 @@ init:
 clone_depth: 1
 #test: off
 environment:
-  matrix:
   - nodejs_version: 1.0
+  matrix:
   - solution_name: QiTwitterDemo.sln
 install:
   - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
