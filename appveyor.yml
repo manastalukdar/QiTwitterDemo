@@ -17,11 +17,9 @@ build_script:
   - build.cmd --quiet verify
 notifications:
   - provider: Webhook
-    url: https://webhooks.gitter.im/e/d60eb28fcc383e8696d7
+    url: https://webhooks.gitter.im/e/2f6212bd39d4d1641142
     on_build_success: false
     on_build_failure: true
     on_build_status_changed: true
-cache:
-  - packages -> **\packages.config
 
 # http://www.paraesthesia.com/archive/2015/01/12/aspnet-vnext-build-braindump/
