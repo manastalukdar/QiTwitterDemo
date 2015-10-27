@@ -20,8 +20,5 @@ platform:
 #  - nuget-restore
 build_script:
   - build.cmd --quiet verify
-clone_depth: 1
-test: off
-deploy: off
 cache:
   - packages -> **\packages.config
