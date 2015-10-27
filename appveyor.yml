@@ -5,6 +5,11 @@ init:
   - git config --global core.autocrlf true
 clone_depth: 1
 #test: off
+install:
+  - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
+  - npm install -g grunt-cli bower gulp
+  - npm -g install npm@2
+  - set PATH=%APPDATA%\npm;%PATH%
 environment:
   matrix:
   - solution_name: QiTwitterDemo.sln
