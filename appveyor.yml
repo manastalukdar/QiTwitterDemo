@@ -1,31 +1,42 @@
 version: 1.0.{build}
+
 os:
   - Visual Studio 2015
+
 init:
   - git config --global core.autocrlf true
+
 clone_depth: 1
+
 #test: off
+
 environment:
   nodejs_version: 1.0
   matrix:
   - solution_name: QiTwitterDemo.sln
+
 install:
   - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
   - npm -g install npm@2 grunt-cli bower gulp
   - set PATH=%APPDATA%\npm;%PATH%
+
 configuration:
   - Debug
   - Release
+
 platform:
   - Any CPU
+
 build_script:
   - build.cmd --quiet verify
+
 notifications:
   - provider: Webhook
     url: https://webhooks.gitter.im/e/2f6212bd39d4d1641142
-    on_build_success: false
+    on_build_success: true
     on_build_failure: true
     on_build_status_changed: true
+
 cache:
   - packages -> **\packages.config
 
