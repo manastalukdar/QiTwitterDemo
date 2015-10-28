@@ -9,8 +9,8 @@ namespace QiTwitterDemo.Helper.Tests
         [TestMethod]
         public void GetTweets()
         {
-            var twitterDataManager = new TwitterDataManager();
-            twitterDataManager.FetchTwitterStream("bihar");
+            var twitterDataManager = new TwitterDataManager(true);
+            twitterDataManager.FetchTwitterStream("2016");
             //twitterDataManager.FetchTwitterTrends(-73.47158505937502, 41.9574765444553, 2487956);
             //twitterDataManager.FetchTwitterStream(-73.47158505937502, 41.9574765444553, 23424977);
         }

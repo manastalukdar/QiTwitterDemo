@@ -1,72 +1,103 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tweetinvi;
-using Tweetinvi.Core;
 using Tweetinvi.Core.Credentials;
 using Tweetinvi.Core.Enum;
-using Tweetinvi.Core.Extensions;
-using Tweetinvi.Core.Interfaces;
-using Tweetinvi.Core.Interfaces.Controllers;
-using Tweetinvi.Core.Interfaces.DTO;
 using Tweetinvi.Core.Interfaces.Models;
 using Tweetinvi.Core.Interfaces.Streaminvi;
 using Tweetinvi.Core.Parameters;
-using Tweetinvi.Json;
 using TwitterDataContract;
 
 namespace QiTwitterDemo.Helper
 {
     public class TwitterDataManager
     {
-        public TwitterDataManager()
+        #region Private Fields
+
+        private bool _isTest = false;
+        private IFilteredStream _filteredStream;
+
+        #endregion Private Fields
+
+        #region Public Constructors
+
+        public TwitterDataManager(bool isTest = false)
         {
+            _filteredStream = Stream.CreateFilteredStream();
             var accessToken = Constants.AccessToken;
             var accessTokenSecret = Constants.AccessTokenSecret;
             var consumerKey = Constants.ConsumerKey;
             var consumerSecret = Constants.ConsumerSecret;
             Auth.ApplicationCredentials = new TwitterCredentials(consumerKey, consumerSecret, accessToken, accessTokenSecret);
             Auth.SetUserCredentials(consumerKey, consumerSecret, accessToken, accessTokenSecret);
-        }
-        public void FetchTwitterStream(double longitide, double latitude)
-        {
-            var stream = Stream.CreateFilteredStream();
-            var centerOfNewYork = new Location(new Coordinates(-74, 40), new Coordinates(-73, 41));
-            stream.AddLocation(centerOfNewYork);
-            int count = 0;
-            stream.MatchingTweetReceived += (sender, args) =>
+            if (isTest)
             {
-                Console.WriteLine("A tweet has been found; the tweet is '" + args.Tweet + "'");
-                count++;
-                if (count > 10)
+                _isTest = true;
+            }
+        }
+
+        #endregion Public Constructors
+
+        #region Public Methods
+
+        ///-------------------------------------------------------------------------------------------------
+        /// <summary>Fetches twitter stream.</summary>
+        ///
+        /// <param name="latitude1"> The first latitude.</param>
+        /// <param name="longitide1">The first longitide.</param>
+        /// <param name="latitude2"> The second latitude.</param>
+        /// <param name="longitide2">The second longitide.</param>
+        /// <remarks>https://github.com/linvi/tweetinvi/issues/72</remarks>
+        ///-------------------------------------------------------------------------------------------------
+        public void FetchTwitterStream(double latitude1, double longitide1, double latitude2, double longitide2)
+        {
+            var centerOfNewYork = new Location(new Coordinates(longitide1, latitude1), new Coordinates(longitide2, latitude2));
+            _filteredStream.AddLocation(centerOfNewYork);
+            int count = 0;
+            _filteredStream.MatchingTweetReceived += (sender, args) =>
+            {
+                if (_isTest)
                 {
-                    stream.StopStream();
+                    Console.WriteLine("A tweet has been found; the tweet is '" + args.Tweet + "'");
+                    count++;
+                    if (count > 10)
+                    {
+                        _filteredStream.StopStream();
+                    }
                 }
             };
-            stream.StartStreamMatchingAllConditions();
+            _filteredStream.StartStreamMatchingAllConditions();
         }
 
         public void FetchTwitterStream(string searchString)
         {
-            var stream = Stream.CreateFilteredStream();
-            stream.AddTrack(searchString);
+            _filteredStream.AddTrack(searchString);
             int count = 0;
-            stream.MatchingTweetReceived += (sender, args) =>
+            _filteredStream.MatchingTweetReceived += (sender, args) =>
             {
-                Console.WriteLine("A tweet has been found; the tweet is '" + args.Tweet + "'");
-                count++;
-                if (count > 10)
+                if (_isTest)
                 {
-                    stream.StopStream();
+                    Console.WriteLine("A tweet has been found; the tweet is '" + args.Tweet + "'");
+                    count++;
+                    if (count > 10)
+                    {
+                        _filteredStream.StopStream();
+                    }
                 }
             };
-            stream.StartStreamMatchingAllConditions();
+            _filteredStream.StartStreamMatchingAllConditions();
         }
 
-        public void FetchTwitterTrends(double latitude, double longitude, long woeId)
+        public void StopStream()
+        {
+            _filteredStream.StopStream();
+        }
+
+        #endregion Public Methods
+
+        #region Private Methods
+
+        private void FetchTwitterTrends(double latitude, double longitude, long woeId)
         {
             var placeTrends = Trends.GetTrendsAt(woeId);
             var twitterTrendingData = new TwitterTrendingData { Trends = new List<TrendData>() };
@@ -97,5 +128,7 @@ namespace QiTwitterDemo.Helper
                 twitterTrendingData.Trends.Add(trendData);
             }
         }
+
+        #endregion Private Methods
     }
 }
