@@ -38,7 +38,8 @@
   "frameworks": {
     "dnx451": {
         "dependencies": {
-            "QiTwitterDemo.Contract": "1.0.0-*"
+            "QiTwitterDemo.Contract": "1.0.0-*",
+            "QiTwitterDemo.Helper": "1.0.0-*"
         }
     },
     "dnxcore50": { }
