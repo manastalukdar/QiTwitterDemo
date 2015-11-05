@@ -15,5 +15,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <DevelopmentServerPort>12359</DevelopmentServerPort>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QiTwitterDemo.Contract\QiTwitterDemo.Contract.csproj" />
+    <ProjectReference Include="..\QiTwitterDemo.Helper\QiTwitterDemo.Helper.csproj" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>
