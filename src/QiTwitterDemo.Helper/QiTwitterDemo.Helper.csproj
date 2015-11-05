@@ -9,11 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QiTwitterDemo.Helper</RootNamespace>
     <AssemblyName>QiTwitterDemo.Helper</AssemblyName>
-<<<<<<< HEAD
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-=======
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
->>>>>>> 1931db0567680b155172f23ec0c37d54b2c53dff
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
