@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "wrappedProject": "../../src/QiTwitterDemo.Contract/QiTwitterDemo.Contract.csproj",
+      "bin": {
+        "assembly": "../../src/QiTwitterDemo.Contract/obj/{configuration}/QiTwitterDemo.Contract.dll",
+        "pdb": "../../src/QiTwitterDemo.Contract/obj/{configuration}/QiTwitterDemo.Contract.pdb"
+      }
+    }
+  }
+}
