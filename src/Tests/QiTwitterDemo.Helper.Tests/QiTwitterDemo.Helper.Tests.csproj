@@ -83,10 +83,6 @@
       <Project>{6efa327f-21fd-408f-8481-92c0ce6c04d7}</Project>
       <Name>QiTwitterDemo.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\QiTwitterDemo.Helper\QiTwitterDemo.Helper.csproj">
-      <Project>{1dd0957a-cce7-4e8f-8a81-d22e12ea5b8e}</Project>
-      <Name>QiTwitterDemo.Helper</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

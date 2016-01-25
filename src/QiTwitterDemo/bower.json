@@ -1,14 +1,39 @@
 {
   "name": "ASP.NET",
   "private": true,
-  "dependencies": {
-    "bootstrap": "^3.3.5",
-    "bootstrap-touch-carousel": "^0.8.0",
-    "hammer.js": "^2.0.4",
-    "jquery": "^2.1.4",
-    "jquery-validation": "^1.11.1",
-    "jquery-validation-unobtrusive": "^3.2.2",
-    "angular": "^1.4.7",
-    "angular-google-maps": "^2.2.1"
+    "dependencies": {
+        "bootstrap": "^3.3.5",
+        "bootstrap-touch-carousel": "^0.8.0",
+        "hammer.js": "^2.0.4",
+        "jquery": "^2.1.4",
+        "jquery-validation": "^1.11.1",
+        "jquery-validation-unobtrusive": "^3.2.2",
+        "angular-google-maps": "^2.2.1",
+        "angular-animate": "^1.4.7",
+        "angular-bootstrap": "^0.14.3",
+        "angular-gridster": "^0.13.5",
+        "angular-loading-bar": "^0.8.0",
+        "angular-moment": "^0.10.3",
+        "angular-multi-select": "^4.0.0",
+        "angular-pageslide-directive": "^1.0.8",
+        "angular-sanitize": "^1.4.7",
+        "angular-spinner": "^0.8.0",
+        "angular-touch": "^1.4.7",
+        "angular-ui-grid": "^3.0.7",
+        "angular-ui-router": "^0.2.15",
+        "font-awesome": "^4.4.0",
+        "json-formatter": "^0.4.0",
+        "jstree": "^3.2.1",
+        "modernizr": "2.8.3",
+        "moment": "^2.10.6",
+        "ng-dialog": "^0.5.5",
+        "q": "^1.4.1",
+        "requirejs": "^2.1.20",
+        "respond": "^1.4.2",
+        "spin.js": "^2.3.2",
+        "toastr": "^2.1.2"
+    },
+  "resolutions": {
+    "angular": ">=1.2.16 1.4.x"
   }
 }

@@ -6,7 +6,6 @@ using Tweetinvi.Core.Enum;
 using Tweetinvi.Core.Interfaces.Models;
 using Tweetinvi.Core.Interfaces.Streaminvi;
 using Tweetinvi.Core.Parameters;
-using TwitterDataContract;
 
 namespace QiTwitterDemo.Helper
 {
